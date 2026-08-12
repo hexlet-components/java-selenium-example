@@ -1,7 +1,16 @@
 .PHONY: install test
 
 install:
-	gradle testClasses
+	./gradlew testClasses
 
 test:
-	gradle test
+	./gradlew test
+
+lint:
+	./gradlew spotlessCheck
+
+lint-fix:
+	./gradlew spotlessApply
+
+check-deps:
+	./gradlew dependencyUpdates -Drevision=release
