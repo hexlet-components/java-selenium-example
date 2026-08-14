@@ -3,14 +3,11 @@ package example;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-class SmokeTest {
+class SmokeTest extends BaseTest {
     @Test
     void openMainPage() {
-        var driver = new ChromeDriver();
         driver.get("https://example.com");
         assertTrue(driver.getTitle().contains("Example"));
-        driver.quit();
     }
 }

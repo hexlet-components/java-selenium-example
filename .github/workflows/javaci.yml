@@ -16,11 +16,14 @@ jobs:
           distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v6
+      # Дисплея на раннере нет, поэтому браузер идёт без окна: BaseTest
+      # добавляет --headless=new, пока HEADLESS не выставлен в false.
+      - name: Run tests and check formatting
+        run: ./gradlew test spotlessCheck
+      # Отчёт нужен и при падении, иначе смотреть будет нечего.
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
-          fetch-depth: 0
-      # Тесты здесь поднимают настоящий Chrome (new ChromeDriver() без headless)
-      # и ходят на example.com, то есть рассчитаны на запуск руками. В CI они
-      # требуют браузера и дисплея, поэтому проверяются компиляция и формат.
-      # Прогон самих тестов это отдельное решение, вместе с headless-режимом.
-      - name: Compile tests and check formatting
-        run: ./gradlew testClasses spotlessCheck
+          name: test-report
+          path: build/reports/tests/test
