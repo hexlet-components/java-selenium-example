@@ -25,8 +25,8 @@ java-selenium-example/
 
 ## Как запустить тесты
 
-1. Установить JDK и Gradle по инструкции: https://github.com/Hexlet/ru-instructions/blob/main/java.md
-2. Перейти в каталог *java-selenium-example*
+1. Установить JDK и Gradle по инструкции: <https://github.com/Hexlet/ru-instructions/blob/main/java.md>
+2. Перейти в каталог _java-selenium-example_
 3. Установить зависимости:
 
 ```bash
@@ -39,7 +39,7 @@ make install
 make test
 ```
 
-После запуска Gradle создаст каталог *build/* и выведет статус `BUILD SUCCESSFUL`. Отчёт о прогоне лежит в *build/reports/tests/test*.
+После запуска Gradle создаст каталог _build/_ и выведет статус `BUILD SUCCESSFUL`. Отчёт о прогоне лежит в _build/reports/tests/test_.
 
 Браузер по умолчанию запускается без окна. Чтобы посмотреть, что делает тест, окно включается переменной окружения:
 
@@ -49,6 +49,6 @@ HEADLESS=false make test
 
 ## Прогон в CI
 
-Пайплайн описан в *.github/workflows/javaci.yml* и делает три шага: ставит JDK, прогоняет `./gradlew test spotlessCheck` и выкладывает отчёт о тестах как артефакт сборки. Дисплея на раннере нет, поэтому браузер там идёт без окна.
+Пайплайн описан в _.github/workflows/javaci.yml_ и делает три шага: ставит JDK, прогоняет `./gradlew test spotlessCheck` и выкладывает отчёт о тестах как артефакт сборки. Дисплея на раннере нет, поэтому браузер там идёт без окна.
 
 Драйвер отдельно ставить не нужно: Selenium Manager сам подбирает и кеширует chromedriver под установленный Chrome. Если подходящего Chrome в системе нет, он скачивает сборку Chrome for Testing. Первый запуск из-за этого дольше остальных.
